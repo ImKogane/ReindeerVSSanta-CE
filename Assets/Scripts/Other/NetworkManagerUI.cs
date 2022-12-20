@@ -7,6 +7,10 @@ using Unity.Services.Authentication;
 using Unity.Services.Relay;
 using Unity.Services.Relay.Models;
 using TMPro;
+using Unity.Netcode;
+using Unity.Netcode.Transports.UTP;
+using Unity.Networking.Transport;
+using Unity.Networking.Transport.Relay;
 
 
 public class NetworkManagerUI : MonoBehaviour
@@ -45,6 +49,11 @@ public class NetworkManagerUI : MonoBehaviour
             string joinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
 
             joinInput.GetComponent<TMP_InputField>().text = joinCode;
+
+            RelayServerData relayServerData = new RelayServerData(allocation, "dtls");
+            NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
+
+            NetworkManager.Singleton.StartHost();
         } catch (RelayServiceException e){
             Debug.Log("Relay service error: " + e.Message);
         }
@@ -53,7 +62,13 @@ public class NetworkManagerUI : MonoBehaviour
     private async void JoinRelay(string joinCode){
         try {
             Debug.Log("JoinRelay: " + joinCode);
-            RelayService.Instance.JoinAllocationAsync(joinCode);
+            JoinAllocation joinAllocation = await RelayService.Instance.JoinAllocationAsync(joinCode);
+
+            RelayServerData relayServerData = new RelayServerData(joinAllocation, "dtls");
+            NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
+
+            NetworkManager.Singleton.StartClient();
+
         } catch (RelayServiceException e){
             Debug.Log("Relay service error: " + e.Message);
         }
