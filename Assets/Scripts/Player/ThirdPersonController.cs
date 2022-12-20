@@ -135,6 +135,7 @@ namespace StarterAssets
                 CinemachineVirtualCamera _tempFollow = _followCamera.GetComponent<CinemachineVirtualCamera>();
                 _tempFollow.Follow = GameObject.Find("PlayerCameraRoot").transform;
             }
+           
         }
 
         private void Start()
