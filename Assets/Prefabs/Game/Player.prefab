@@ -1569,7 +1569,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2888689264923367021}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: -18.133, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1694,10 +1694,10 @@ SkinnedMeshRenderer:
   - {fileID: 8759123684296884669}
   - {fileID: 4825003180070026220}
   m_BlendShapeWeights: []
-  m_RootBone: {fileID: 3753158338728291882}
+  m_RootBone: {fileID: 6503441184685103618}
   m_AABB:
-    m_Center: {x: -0.000000029802322, y: -0.09214255, z: 0.026248664}
-    m_Extent: {x: 0.52818465, y: 0.88092995, z: 0.22050178}
+    m_Center: {x: 0, y: 0.9297371, z: 0.026248664}
+    m_Extent: {x: 0.52818465, y: 0.9254627, z: 0.22050178}
   m_DirtyAABB: 0
 --- !u!1 &3040784603414890362
 GameObject:
@@ -1906,7 +1906,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4478224888691785965
 Transform:
   m_ObjectHideFlags: 0
@@ -3510,7 +3510,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7261230082137554465}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: a177b0e6ff26a894180468c168e802cc, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 36078ab0369161e49a29d349ae3e0739, type: 3}
   m_Controller: {fileID: 9100000, guid: 40db3173a05ae3242b1c182a09b0a183, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
