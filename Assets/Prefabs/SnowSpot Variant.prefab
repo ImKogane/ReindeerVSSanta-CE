@@ -70,7 +70,54 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 5b26866d45f496e409570a6de2d14f10,
         type: 3}
       propertyPath: m_Name
-      value: SnowSpot
+      value: SnowSpot Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b26866d45f496e409570a6de2d14f10, type: 3}
+--- !u!1 &7109115342175968120 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5b26866d45f496e409570a6de2d14f10,
+    type: 3}
+  m_PrefabInstance: {fileID: 7956118283946599977}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &6645479007350110589
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7109115342175968120}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!135 &7670519384242842617
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7109115342175968120}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.71186805
+  m_Center: {x: -0.00000017881393, y: 0.116010055, z: -0.000000059604645}
+--- !u!114 &3135014107208463091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7109115342175968120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe174c31a32b8dd418784b734a06fabf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
