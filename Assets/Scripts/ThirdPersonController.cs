@@ -1,5 +1,4 @@
-﻿using Cinemachine;
-using UnityEngine;
+﻿using UnityEngine;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
 #endif
@@ -106,7 +105,6 @@ namespace StarterAssets
         private CharacterController _controller;
         private StarterAssetsInputs _input;
         private GameObject _mainCamera;
-        private GameObject _followCamera;
 
         private const float _threshold = 0.01f;
 
@@ -131,9 +129,6 @@ namespace StarterAssets
             if (_mainCamera == null)
             {
                 _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-                _followCamera = GameObject.FindGameObjectWithTag("FollowCamera");
-                CinemachineVirtualCamera _tempFollow = _followCamera.GetComponent<CinemachineVirtualCamera>();
-                _tempFollow.Follow = GameObject.Find("PlayerCameraRoot").transform;
             }
         }
 
@@ -281,31 +276,6 @@ namespace StarterAssets
             {
                 _animator.SetFloat(_animIDSpeed, _animationBlend);
                 _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
-            }
-        }
-
-        private void Interaction(Collider other)
-        {
-            if (_input.interaction)
-            {
-                Rigidbody body = other.attachedRigidbody;
-                if (body != null)
-                {
-                    InteractionBase interaction = body.GetComponentInParent<InteractionBase>();
-                    if (interaction != null)
-                    {
-                        interaction.Action(gameObject);
-                    }
-                }
-            }
-            _input.interaction = false;
-        }
-
-        private void OnTriggerStay(Collider other)
-        {
-            if (other.gameObject.tag == "Interactible")
-            {
-                Interaction(other);
             }
         }
 
