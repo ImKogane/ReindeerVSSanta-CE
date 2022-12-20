@@ -1026,9 +1026,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36aa38f2c41cd4244b191223bd074313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  createButton: {fileID: 0}
-  joinButton: {fileID: 0}
-  joinInput: {fileID: 0}
+  createButton: {fileID: 762587696}
+  joinButton: {fileID: 1155976478}
+  joinInput: {fileID: 1800299080}
 --- !u!1 &1124445762
 GameObject:
   m_ObjectHideFlags: 0
