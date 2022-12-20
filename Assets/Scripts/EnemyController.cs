@@ -29,7 +29,7 @@ public class EnemyController : MonoBehaviour
 
     //private PhotonView photonView;
     private bool canMove;
-    private bool canAttack;
+    [SerializeField] private bool canAttack;
     private bool inAttack;
 
     void Awake()
@@ -54,6 +54,7 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GetNearestPlayer();
         if (canMove /*&& PhotonNetwork.IsMasterClient*/ == true)
         {
             agent.destination = movePositionTransform.position;
@@ -65,6 +66,7 @@ public class EnemyController : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
+            
             if(canAttack)
             {
                 //player = collision.gameObject.GetComponent<PlayerStats>();
@@ -79,7 +81,9 @@ public class EnemyController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            canAttack = true;
             //player = null;
+
         }
         return;
     }
@@ -104,7 +108,7 @@ public class EnemyController : MonoBehaviour
         AnimationClip[] clips = anim.runtimeAnimatorController.animationClips;
         foreach (AnimationClip clip in clips)
         {
-            if(clip.name == "Attack")
+            if (clip.name == "Attack")
             {
                 cooldown = clip.length;
                 break;
@@ -125,7 +129,7 @@ public class EnemyController : MonoBehaviour
         anim.SetTrigger("Attack");
         canAttack = false;
         inAttack = true;
-        canMove = false;
+        //canMove = false;
         SetCooldown();
         Debug.Log("Attaque !");
 
