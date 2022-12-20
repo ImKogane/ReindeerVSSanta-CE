@@ -14,6 +14,7 @@ namespace StarterAssets
 		public bool sprint;
         public bool interaction;
 		public bool aim;
+        public bool shoot;
 
         [Header("Movement Settings")]
 		public bool analogMovement;
@@ -55,6 +56,10 @@ namespace StarterAssets
 		{
 			AimInput(value.isPressed);
         }
+        public void OnShoot(InputValue value)
+        {
+            ShootInput(value.isPressed);
+        }
 
         public void MoveInput(Vector2 newMoveDirection)
 		{
@@ -83,6 +88,10 @@ namespace StarterAssets
 		{
 			aim = newAimState;
 		}
+        public void ShootInput(bool newShootState)
+        {
+            shoot = newShootState;
+        }
         private void OnApplicationFocus(bool hasFocus)
 		{
 			SetCursorState(cursorLocked);

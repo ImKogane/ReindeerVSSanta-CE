@@ -8,6 +8,8 @@ TagManager:
   - FollowCamera
   - AimingCamera
   - AimPoint
+  - Interactible
+  - FirePosition
   layers:
   - Default
   - TransparentFX
