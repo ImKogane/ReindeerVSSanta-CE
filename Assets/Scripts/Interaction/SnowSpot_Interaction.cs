@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class InteractionBase : MonoBehaviour
+public class SnowSpot_Interaction : InteractionBase
 {
-    public virtual void Action(GameObject player)
+    public override void Action(GameObject player)
     {
         if (player.GetComponent<ThirdPersonController>())
         {
-           Debug.Log("Interaction");
+           Debug.Log("Snow spot interaction");
         }
     }
 }
