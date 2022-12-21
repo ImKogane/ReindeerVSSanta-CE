@@ -31,6 +31,7 @@ public class ThirdPersonShooterController : MonoBehaviour
         thirdPersonController = GetComponent<ThirdPersonController>();
         debugTransform = GameObject.FindGameObjectWithTag("AimPoint").transform;
         spawnBulletPosition = GameObject.FindGameObjectWithTag("FirePosition").transform;
+        shootCooldown = 0.8f;
         canShoot = false;
     }
 
@@ -63,6 +64,11 @@ public class ThirdPersonShooterController : MonoBehaviour
             transform.forward = Vector3.Lerp(transform.forward, aimDirection, Time.deltaTime * 20f);
 
             canShoot = true;
+
+            if (shootCooldown > 0)
+            {
+                shootCooldown -= Time.deltaTime;
+            }
         }
         else
         {
@@ -89,11 +95,6 @@ public class ThirdPersonShooterController : MonoBehaviour
                     starterAssetsInputs.shoot = false;
                 }
             }
-        }
-
-        if (shootCooldown > 0)
-        {
-            shootCooldown -= Time.deltaTime;
         }
     }
 }
