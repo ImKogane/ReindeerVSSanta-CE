@@ -10,6 +10,7 @@ public class ThirdPersonShooterController : MonoBehaviour
 {
     [SerializeField] private float normalSensitivity;
     [SerializeField] private float aimSensitivity;
+    [SerializeField] private float shootCooldown;
     [SerializeField] private LayerMask aimColliderLayerMask = new LayerMask();
     [SerializeField] public Transform bulletProjectile;
 
@@ -62,9 +63,18 @@ public class ThirdPersonShooterController : MonoBehaviour
 
         if (starterAssetsInputs.shoot)
         {
-            Vector3 aimDir = (mouseWorldPosition - spawnBulletPosition.position).normalized;
-            Instantiate(bulletProjectile, spawnBulletPosition.position, Quaternion.LookRotation(aimDir, Vector3.up));
-            starterAssetsInputs.shoot= false;
+            if (shootCooldown <= 0)
+            {
+                Vector3 aimDir = (mouseWorldPosition - spawnBulletPosition.position).normalized;
+                Instantiate(bulletProjectile, spawnBulletPosition.position, Quaternion.LookRotation(aimDir, Vector3.up));
+                shootCooldown = 1;
+                starterAssetsInputs.shoot = false;
+            }
+        }
+
+        if (shootCooldown > 0)
+        {
+            shootCooldown -= Time.deltaTime;
         }
     }
 }
