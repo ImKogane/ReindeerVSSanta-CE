@@ -3591,7 +3591,16 @@ MonoBehaviour:
   SpeedChangeRate: 10
   Sensitivity: 1
   LandingAudioClip: {fileID: 8300000, guid: ff697d3070687ce4583faa0561a145a2, type: 3}
-  FootstepAudioClips: []
+  FootstepAudioClips:
+  - {fileID: 8300000, guid: 9f472551c13113f4e9000fdfcd995a70, type: 3}
+  - {fileID: 8300000, guid: 431a1ba8e5dc16442873d465adc7b1c8, type: 3}
+  - {fileID: 8300000, guid: 08c6bbc13bf98b4469d3001c3dfe3ceb, type: 3}
+  - {fileID: 8300000, guid: 8c71f9e9626d9ad4b92ade97d978490f, type: 3}
+  - {fileID: 8300000, guid: c62cd10f3cf7b384180777b18821ec4d, type: 3}
+  - {fileID: 8300000, guid: d45a46db550fc0c45844bdf9e5ac251f, type: 3}
+  - {fileID: 8300000, guid: 87b5f8c1529c95842a9692165b5791d5, type: 3}
+  - {fileID: 8300000, guid: 6fc97372a80b25d41b5e81130f9e873a, type: 3}
+  - {fileID: 8300000, guid: aa3f35022a35ae34790b8f926a556497, type: 3}
   FootstepAudioVolume: 0.3
   JumpHeight: 1.2
   Gravity: -15

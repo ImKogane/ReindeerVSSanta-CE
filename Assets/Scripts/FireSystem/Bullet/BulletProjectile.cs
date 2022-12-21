@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class BulletProjectile : MonoBehaviour
 {
-    [SerializeField] private Transform VFX;
-
     private Rigidbody bulletRigidbody;
 
     private void Awake()
@@ -15,7 +13,7 @@ public class BulletProjectile : MonoBehaviour
 
     private void Start()
     {
-        float speed = 20.0f;
+        float speed = 40.0f;
         bulletRigidbody.velocity = transform.forward * speed;
     }
     private void OnTriggerEnter(Collider other)
@@ -23,14 +21,11 @@ public class BulletProjectile : MonoBehaviour
         if(other.GetComponent<BulletTarget>() != null)
         {
             //Hit Target
-            Instantiate(VFX, transform.position, Quaternion.identity);
         }
         else
         {
             //HitSomethingElse
-            Instantiate(VFX, transform.position, Quaternion.identity);
         }
         Destroy(gameObject);
     }
 }
-
