@@ -77,7 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba0a91896b45bcc419b762f2e226d2e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VFX: {fileID: 2740027847073371181, guid: abc224923d7c2104fbe855d3676f960c, type: 3}
+  VFX: {fileID: 2741872876784058059, guid: abc224923d7c2104fbe855d3676f960c, type: 3}
   bulletDamage: 5
   bulletSpeed: 30
 --- !u!1 &2820260183763279808

@@ -7,7 +7,7 @@ public class BulletProjectile : MonoBehaviour
 
 
 
-    [SerializeField] private Transform VFX;
+    [SerializeField] private GameObject VFX;
 
     [Header("Spell stats")]
     [SerializeField] private int bulletDamage;
@@ -39,6 +39,7 @@ public class BulletProjectile : MonoBehaviour
             Instantiate(VFX, transform.position, Quaternion.identity);
         }
         Destroy(gameObject);
+        Destroy(VFX.gameObject);
     }
 }
 
