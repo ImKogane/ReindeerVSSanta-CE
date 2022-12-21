@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using Photon.Pun;
+
 
 public class EnemyStats : MonoBehaviour
 {
@@ -14,6 +14,7 @@ public class EnemyStats : MonoBehaviour
     [SerializeField]
     int pointsOnDeath;
 
+    [SerializeField]
     private WaveSpawner waveSpawner;
 
 
@@ -23,27 +24,26 @@ public class EnemyStats : MonoBehaviour
     }
 
 
-    public void TakeDamage(float damage/*, PlayerStats playerDealDamage*/)
+    public void Update()
     {
-        PV -= damage;
-
-        if (PV <= 0)
-        {
-            //view = GetComponent<PhotonView>();
-            //view.RPC("networkDestroy", RpcTarget.All);
-            //playerDealDamage.AddPoints(pointsOnDeath);
-            
-        }
+        Death();
     }
 
+   
+
     //[PunRPC]
-    public void Destroy(){
-        if (waveSpawner != null /*&& PhotonNetwork.IsMasterClient */== true){
-            if (waveSpawner.EnemiesAlive != 0)
+    public void Death()
+    {
+        if (PV <= 0)
+        {
+            if (waveSpawner != null)
             {
-                waveSpawner.EnemiesAlive -= 1;
+                if (waveSpawner.EnemiesAlive != 0)
+                {
+                    waveSpawner.EnemiesAlive -= 1;
+                    Destroy(gameObject);
+                }
             }
-           /* PhotonNetwork.*/Destroy(gameObject);
         }
     }
 }

@@ -17,9 +17,11 @@ public class BulletProjectile : MonoBehaviour
 
     private Rigidbody bulletRigidbody;
 
+
     private void Awake()
     {
         bulletRigidbody = GetComponent<Rigidbody>();
+        
     }
 
     private void Start()
@@ -30,16 +32,22 @@ public class BulletProjectile : MonoBehaviour
     {
         if(other.GetComponent<BulletTarget>() != null)
         {
+            
             //Hit Target
             Instantiate(VFX, transform.position, Quaternion.identity);
+            EnemyStats targetEnemy = other.GetComponent<EnemyStats>();
+            targetEnemy.PV -= bulletDamage;
         }
         else
         {
             //HitSomethingElse
             Instantiate(VFX, transform.position, Quaternion.identity);
+            
         }
         Destroy(gameObject);
         Destroy(VFX.gameObject);
     }
+
+    
 }
 

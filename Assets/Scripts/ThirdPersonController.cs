@@ -89,6 +89,8 @@ namespace StarterAssets
         private float _verticalVelocity;
         private float _terminalVelocity = 53.0f;
 
+        public float PV;
+
         // timeout deltatime
         private float _jumpTimeoutDelta;
         private float _fallTimeoutDelta;
@@ -167,6 +169,7 @@ namespace StarterAssets
             JumpAndGravity();
             GroundedCheck();
             Move();
+            Death();
         }
 
         private void LateUpdate()
@@ -434,5 +437,14 @@ namespace StarterAssets
         {
             _rotateOnMove = newRotateOnMove;
         }
+
+        public void Death()
+        {
+            if (PV <= 0) 
+            {
+                Destroy(gameObject);
+            }
+        }
+
     }
 }

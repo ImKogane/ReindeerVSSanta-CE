@@ -4823,7 +4823,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 7
+  m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -4892,6 +4892,7 @@ MonoBehaviour:
   PV: 20
   damage: 5
   pointsOnDeath: 0
+  waveSpawner: {fileID: 0}
 --- !u!1 &1823625469791490
 GameObject:
   m_ObjectHideFlags: 0

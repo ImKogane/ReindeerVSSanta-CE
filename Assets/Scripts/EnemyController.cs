@@ -1,3 +1,4 @@
+using StarterAssets;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -19,15 +20,10 @@ public class EnemyController : MonoBehaviour
 
     private EnemyStats enemyStats;
 
-   
-    //PlayerStats player;
-
     public float cooldown;
-
 
     public static bool isMove;
 
-    //private PhotonView photonView;
     private bool canMove;
     [SerializeField] private bool canAttack;
     private bool inAttack;
@@ -37,7 +33,7 @@ public class EnemyController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
         enemyStats = GetComponent<EnemyStats>();
-        //photonView = GetComponent<PhotonView>();
+    
     }
 
     void Start()
@@ -69,8 +65,7 @@ public class EnemyController : MonoBehaviour
             
             if(canAttack)
             {
-                //player = collision.gameObject.GetComponent<PlayerStats>();
-                StartCoroutine(Attack());
+                StartCoroutine(Attack(collision.gameObject));
             }
         }
         
@@ -81,7 +76,7 @@ public class EnemyController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            //player = null;
+
 
         }
         return;
@@ -115,21 +110,17 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    //public void DealDamage()
-    //{
-    //    if(player != null)
-    //    {
-    //        player.TakeDamage(enemyStats.damage);
-    //    }
-    //}
-
-    IEnumerator Attack()
+    IEnumerator Attack(GameObject player)
     {
         anim.SetTrigger("Attack");
         canAttack = false;
         inAttack = true;
         //canMove = false;
         SetCooldown();
+        ThirdPersonController thirdPerson = player.GetComponent<ThirdPersonController>();
+        thirdPerson.PV -= enemyStats.damage;
+        Debug.Log(thirdPerson.PV);
+
         Debug.Log("Attaque !");
 
         yield return new WaitForSeconds(0.3f);

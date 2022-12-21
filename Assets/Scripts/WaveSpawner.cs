@@ -32,17 +32,9 @@ public class WaveSpawner : MonoBehaviour
         }
     }
 
-    //[SerializeField]
-    //private UIManager uiManager;
 
     public List<GameObject> spawnedEnemy = new List<GameObject>();
     public Transform[] spawningPoints = new Transform[0];
-
-    //[SerializeField]
-    //private Transform ennemyPrefab;
-
-    //[SerializeField]
-    //private Transform spawnPoint;
 
     public GameObject particule;
 
@@ -55,26 +47,14 @@ public class WaveSpawner : MonoBehaviour
 
     public int EnemiesAlive = 0;
 
-    //public PhotonView view;
-
+  
 private void Start()
     {
-       ////if(PhotonNetwork.IsMasterClient == true)
-       //// {
-       //     gameObject.SetActive(true);
-       //// }
-       // else
-       // {
-       //     gameObject.SetActive(false);
-       //     gameObject.tag = "Untagged";
-       // }
-        //uiManager = GameObject.FindObjectOfType<UIManager>();
         GameObject[] _tempSpawn = GameObject.FindGameObjectsWithTag("Spawner");
         for(int i = 0; i < _tempSpawn.Length; i++)
         {
             spawningPoints[i] = _tempSpawn[i].transform;
         }
-        //view = GetComponent<PhotonView>();
     }
 
     // Update is called once per frame
@@ -82,50 +62,33 @@ private void Start()
     {
         if (EnemiesAlive > 0)
         {
-//            Debug.Log(EnemiesAlive);
             return;
         }
         else 
         {
             EnemyController.isMove = false;
-            //view.RPC("showProgressBarWave", RpcTarget.All);
-            //uiManager.ShowProgressBarWave(true);
+           
         }
 
         if (countdown <= 0f)
         {
-            //view.RPC("startCoroutine", RpcTarget.All);
+         
             StartCoroutine(SpawnWave());
             countdown = TimeBetweenWaves;
-            //return;
         }
         countdown -= Time.deltaTime;
-        Debug.Log("timer = " + countdown/TimeBetweenWaves);
-
-        //uiManager.UpdateProgressBarWave(countdown/TimeBetweenWaves);
+       //Debug.Log("timer = " + countdown/TimeBetweenWaves);
     }
 
-    //[PunRPC]
-    public void showProgressBarWave(){
-        //if (PhotonNetwork.IsMasterClient == true){
-            //uiManager.ShowProgressBarWave(true);
-        //}
-    }
+  
 
-    //[PunRPC]
-    //public void startCoroutine(){
-    //    StartCoroutine("SpawnWave");
-    //}
 
     IEnumerator SpawnWave()
     {
         waveIndex++;
-        //uiManager.UpdateWaveText();
-        //uiManager.ShowProgressBarWave(false);
-
+       
         for ( int i = 0; i < waveIndex; i++)
         {
-            //Instantiate(particule, spawnPoint.position, spawnPoint.rotation);
             SpawnEnemy();
             yield return new WaitForSeconds(0.5f);
             EnemyController.isMove = true;
