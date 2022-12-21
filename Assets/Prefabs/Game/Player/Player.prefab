@@ -3507,6 +3507,7 @@ GameObject:
   - component: {fileID: 7261230082137554477}
   - component: {fileID: 565647567406032288}
   - component: {fileID: 4171965105385463252}
+  - component: {fileID: 6839850164324603211}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -3772,6 +3773,22 @@ MonoBehaviour:
     m_Bits: 1
   bulletProjectile: {fileID: 867255492874219362, guid: ca19f4ee70c007546958cf37f817d52b,
     type: 3}
+--- !u!114 &6839850164324603211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7261230082137554465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 951099334
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!1 &7281067314498973515
 GameObject:
   m_ObjectHideFlags: 0

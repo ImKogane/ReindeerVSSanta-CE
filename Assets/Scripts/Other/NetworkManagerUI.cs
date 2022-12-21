@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using Unity.Services.Core;
 using Unity.Services.Authentication;
 using Unity.Services.Relay;
@@ -49,11 +50,13 @@ public class NetworkManagerUI : MonoBehaviour
             string joinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
 
             joinInput.GetComponent<TMP_InputField>().text = joinCode;
+            Debug.Log("code : " + joinCode);
 
             RelayServerData relayServerData = new RelayServerData(allocation, "dtls");
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
 
             NetworkManager.Singleton.StartHost();
+            SceneManager.LoadScene("MainLevel2");
         } catch (RelayServiceException e){
             Debug.Log("Relay service error: " + e.Message);
         }
@@ -68,7 +71,7 @@ public class NetworkManagerUI : MonoBehaviour
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
 
             NetworkManager.Singleton.StartClient();
-
+            SceneManager.LoadScene("MainLevel2");
         } catch (RelayServiceException e){
             Debug.Log("Relay service error: " + e.Message);
         }
