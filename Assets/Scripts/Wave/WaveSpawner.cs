@@ -48,7 +48,7 @@ public class WaveSpawner : MonoBehaviour
     public int EnemiesAlive = 0;
 
   
-private void Start()
+    private void Start()
     {
         GameObject[] _tempSpawn = GameObject.FindGameObjectsWithTag("Spawner");
         for(int i = 0; i < _tempSpawn.Length; i++)
@@ -67,7 +67,6 @@ private void Start()
         else 
         {
             EnemyController.isMove = false;
-           
         }
 
         if (countdown <= 0f)

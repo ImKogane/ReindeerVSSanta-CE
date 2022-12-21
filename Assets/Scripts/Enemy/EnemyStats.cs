@@ -28,10 +28,6 @@ public class EnemyStats : MonoBehaviour
     {
         Death();
     }
-
-   
-
-    //[PunRPC]
     public void Death()
     {
         if (PV <= 0)

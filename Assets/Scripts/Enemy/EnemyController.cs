@@ -39,11 +39,9 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         cooldown = 0;
-
         canAttack = true;
         inAttack = false;
         canMove = true;
-       
     }
 
 
@@ -62,7 +60,6 @@ public class EnemyController : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            
             if(canAttack)
             {
                 StartCoroutine(Attack(collision.gameObject));
@@ -119,12 +116,7 @@ public class EnemyController : MonoBehaviour
         SetCooldown();
         ThirdPersonController thirdPerson = player.GetComponent<ThirdPersonController>();
         thirdPerson.PV -= enemyStats.damage;
-        Debug.Log(thirdPerson.PV);
-
-        Debug.Log("Attaque !");
-
         yield return new WaitForSeconds(0.3f);
-
         anim.ResetTrigger("Attack");
     }
 
