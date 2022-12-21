@@ -67,7 +67,7 @@ public class ThirdPersonShooterController : MonoBehaviour
             {
                 Vector3 aimDir = (mouseWorldPosition - spawnBulletPosition.position).normalized;
                 Instantiate(bulletProjectile, spawnBulletPosition.position, Quaternion.LookRotation(aimDir, Vector3.up));
-                shootCooldown = 1;
+                shootCooldown = 0.8f;
                 starterAssetsInputs.shoot = false;
             }
         }
