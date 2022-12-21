@@ -4,7 +4,7 @@ using Cinemachine;
 using StarterAssets;
 using UnityEngine.InputSystem;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class ThirdPersonShooterController : MonoBehaviour
 {
@@ -13,12 +13,15 @@ public class ThirdPersonShooterController : MonoBehaviour
     [SerializeField] private float shootCooldown;
     [SerializeField] private LayerMask aimColliderLayerMask = new LayerMask();
     [SerializeField] public Transform bulletProjectile;
+    [SerializeField] private Sprite crosshairNormal;
+    [SerializeField] private Sprite crosshairAim;
 
     private Transform debugTransform;
     private Transform spawnBulletPosition;
     private CinemachineVirtualCamera aimVirtualCamera;
     private ThirdPersonController thirdPersonController;
     private StarterAssetsInputs starterAssetsInputs;
+    private bool canShoot;
     private void Awake()
     {
         GameObject _tempCamera = GameObject.FindGameObjectWithTag("AimingCamera");
@@ -28,6 +31,8 @@ public class ThirdPersonShooterController : MonoBehaviour
         thirdPersonController = GetComponent<ThirdPersonController>();
         debugTransform = GameObject.FindGameObjectWithTag("AimPoint").transform;
         spawnBulletPosition = GameObject.FindGameObjectWithTag("FirePosition").transform;
+        shootCooldown = 0.8f;
+        canShoot = false;
     }
 
     private void Update()
@@ -48,33 +53,48 @@ public class ThirdPersonShooterController : MonoBehaviour
             thirdPersonController.SetSensitivity(aimSensitivity);
             thirdPersonController.SetRotateOnMove(false);
 
+            GameObject _tempUI = GameObject.FindGameObjectWithTag("Crosshair");
+            Image _tempImage = _tempUI.GetComponent<Image>();
+            _tempImage.sprite = crosshairAim;
+
             Vector3 worldAimTarget = mouseWorldPosition;
             worldAimTarget.y = transform.position.y;
             Vector3 aimDirection = (worldAimTarget - transform.position).normalized;
 
             transform.forward = Vector3.Lerp(transform.forward, aimDirection, Time.deltaTime * 20f);
+
+            canShoot = true;
+
+            if (shootCooldown > 0)
+            {
+                shootCooldown -= Time.deltaTime;
+            }
         }
         else
         {
             aimVirtualCamera.gameObject.SetActive(false);
             thirdPersonController.SetSensitivity(normalSensitivity);
             thirdPersonController.SetRotateOnMove(true);
+
+            GameObject _tempUI = GameObject.FindGameObjectWithTag("Crosshair");
+            Image _tempImage = _tempUI.GetComponent<Image>();
+            _tempImage.sprite = crosshairNormal;
+
+            canShoot = false;
         }
 
         if (starterAssetsInputs.shoot)
         {
             if (shootCooldown <= 0)
             {
-                Vector3 aimDir = (mouseWorldPosition - spawnBulletPosition.position).normalized;
-                Instantiate(bulletProjectile, spawnBulletPosition.position, Quaternion.LookRotation(aimDir, Vector3.up));
-                shootCooldown = 0.8f;
-                starterAssetsInputs.shoot = false;
+                if(canShoot == true)
+                {
+                    Vector3 aimDir = (mouseWorldPosition - spawnBulletPosition.position).normalized;
+                    Instantiate(bulletProjectile, spawnBulletPosition.position, Quaternion.LookRotation(aimDir, Vector3.up));
+                    shootCooldown = 0.8f;
+                    starterAssetsInputs.shoot = false;
+                }
             }
-        }
-
-        if (shootCooldown > 0)
-        {
-            shootCooldown -= Time.deltaTime;
         }
     }
 }
