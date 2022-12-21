@@ -20999,6 +20999,26 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5195590168631875656, guid: f710ef7eabd9cf04e8641a7388d5b364,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 5.011409
+      objectReference: {fileID: 0}
+    - target: {fileID: 5195590168631875656, guid: f710ef7eabd9cf04e8641a7388d5b364,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 7.25375
+      objectReference: {fileID: 0}
+    - target: {fileID: 5195590168631875656, guid: f710ef7eabd9cf04e8641a7388d5b364,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 0.026444912
+      objectReference: {fileID: 0}
+    - target: {fileID: 5195590168631875656, guid: f710ef7eabd9cf04e8641a7388d5b364,
+        type: 3}
+      propertyPath: m_Center.z
+      value: -0.08727026
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f710ef7eabd9cf04e8641a7388d5b364, type: 3}
 --- !u!4 &924855406 stripped
