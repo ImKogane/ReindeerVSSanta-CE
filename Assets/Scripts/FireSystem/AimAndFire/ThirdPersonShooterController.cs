@@ -11,7 +11,7 @@ public class ThirdPersonShooterController : MonoBehaviour
     [SerializeField] private float normalSensitivity;
     [SerializeField] private float aimSensitivity;
     [SerializeField] private LayerMask aimColliderLayerMask = new LayerMask();
-    [SerializeField] private Transform bulletProjectile;
+    [SerializeField] public Transform bulletProjectile;
 
     private Transform debugTransform;
     private Transform spawnBulletPosition;

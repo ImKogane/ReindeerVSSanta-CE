@@ -109,7 +109,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.71186805
   m_Center: {x: -0.00000017881393, y: 0.116010055, z: -0.000000059604645}
---- !u!114 &3135014107208463091
+--- !u!114 &41589999962527788
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,6 +118,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7109115342175968120}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe174c31a32b8dd418784b734a06fabf, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fb4c37b9b61d8849b36eacf29943341, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spotName: Snowballs
+  spotSpell: {fileID: 867255492874219362, guid: ca19f4ee70c007546958cf37f817d52b,
+    type: 3}

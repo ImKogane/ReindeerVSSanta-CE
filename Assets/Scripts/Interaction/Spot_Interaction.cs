@@ -4,13 +4,17 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class GiftSpot_Interaction : InteractionBase
+public class Spot_Interaction : InteractionBase
 {
+    [SerializeField] private string spotName;
+    public Transform spotSpell;
+
     public override void Action(GameObject player)
     {
         if (player.GetComponent<ThirdPersonController>())
         {
-           Debug.Log("Gift spot interaction");
+           Debug.Log(spotName + " interaction");
+           player.GetComponent<ThirdPersonShooterController>().bulletProjectile = spotSpell;
         }
     }
 }
