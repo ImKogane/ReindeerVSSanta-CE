@@ -50,11 +50,11 @@ public class WaveSpawner : MonoBehaviour
   
     private void Start()
     {
-        GameObject[] _tempSpawn = GameObject.FindGameObjectsWithTag("Spawner");
+        /*GameObject[] _tempSpawn = GameObject.FindGameObjectsWithTag("Spawner");
         for(int i = 0; i < _tempSpawn.Length; i++)
         {
             spawningPoints[i] = _tempSpawn[i].transform;
-        }
+        }*/
     }
 
     // Update is called once per frame
