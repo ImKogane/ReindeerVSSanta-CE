@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - CinemachineTarget
+  - FollowCamera
+  - AimingCamera
+  - AimPoint
+  - Interactible
+  - FirePosition
   layers:
   - Default
   - TransparentFX
