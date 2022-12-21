@@ -45,7 +45,6 @@ public class BulletProjectile : MonoBehaviour
             
         }
         Destroy(gameObject);
-        Destroy(VFX.gameObject);
     }
 
     
