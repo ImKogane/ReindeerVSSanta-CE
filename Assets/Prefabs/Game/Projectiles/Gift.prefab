@@ -64,6 +64,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   VFX: {fileID: 4166709457928488060, guid: ec8a4ce20d181294693de35754cc8c9c, type: 3}
+  bulletDamage: 10
+  bulletSpeed: 15
 --- !u!65 &3374858665766748470
 BoxCollider:
   m_ObjectHideFlags: 0

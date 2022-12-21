@@ -4,7 +4,16 @@ using UnityEngine;
 
 public class BulletProjectile : MonoBehaviour
 {
+
+
+
     [SerializeField] private Transform VFX;
+
+    [Header("Spell stats")]
+    [SerializeField] private int bulletDamage;
+    [Range(15f, 30f)]
+    [SerializeField] private float bulletSpeed;
+
 
     private Rigidbody bulletRigidbody;
 
@@ -15,8 +24,7 @@ public class BulletProjectile : MonoBehaviour
 
     private void Start()
     {
-        float speed = 20.0f;
-        bulletRigidbody.velocity = transform.forward * speed;
+        bulletRigidbody.velocity = transform.forward * bulletSpeed;
     }
     private void OnTriggerEnter(Collider other)
     {

@@ -78,6 +78,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   VFX: {fileID: 2740027847073371181, guid: abc224923d7c2104fbe855d3676f960c, type: 3}
+  bulletDamage: 5
+  bulletSpeed: 30
 --- !u!1 &2820260183763279808
 GameObject:
   m_ObjectHideFlags: 0
