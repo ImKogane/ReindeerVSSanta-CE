@@ -23,30 +23,14 @@ public class BulletProjectile : MonoBehaviour
         if(other.GetComponent<BulletTarget>() != null)
         {
             //Hit Target
-            StartCoroutine(SpawnVFX());
+            Instantiate(VFX, transform.position, Quaternion.identity);
         }
         else
         {
             //HitSomethingElse
-            StartCoroutine(SpawnVFX());
+            Instantiate(VFX, transform.position, Quaternion.identity);
         }
-        
-    }
-
-    IEnumerator SpawnVFX()
-    {
-        Transform vfx = Instantiate(VFX, transform.position, Quaternion.identity);
-       
-
-        yield return new WaitForSeconds(0.5f);
-
-        Destroy(vfx.gameObject);
         Destroy(gameObject);
-        Debug.Log("Destroy VFX");
-        
-
     }
-    
-
 }
 
