@@ -16,7 +16,6 @@ public class EnemyStats : MonoBehaviour
 
     private WaveSpawner waveSpawner;
 
-    //public PhotonView view;
 
     void Start()
     {
@@ -38,7 +37,7 @@ public class EnemyStats : MonoBehaviour
     }
 
     //[PunRPC]
-    public void networkDestroy(){
+    public void Destroy(){
         if (waveSpawner != null /*&& PhotonNetwork.IsMasterClient */== true){
             if (waveSpawner.EnemiesAlive != 0)
             {

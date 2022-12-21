@@ -81,7 +81,6 @@ public class EnemyController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            canAttack = true;
             //player = null;
 
         }

@@ -138,7 +138,7 @@ private void Start()
     {
         int random = Random.Range(0, spawnedEnemy.Count);
         int random1 = Random.Range(0, spawningPoints.Length);
-       /* GameObject _newEnemy = PhotonNetwork.*/Instantiate(spawnedEnemy[random], spawningPoints[random1].transform.position, spawningPoints[random1].rotation);
+        Instantiate(spawnedEnemy[random], spawningPoints[random1].transform.position, spawningPoints[random1].rotation);
 
         EnemiesAlive++;
     }

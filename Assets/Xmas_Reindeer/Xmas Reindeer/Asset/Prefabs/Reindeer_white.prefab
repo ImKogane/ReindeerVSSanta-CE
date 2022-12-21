@@ -4748,6 +4748,8 @@ GameObject:
   - component: {fileID: -2335631595979491154}
   - component: {fileID: 6178868317807964413}
   - component: {fileID: 8085793820128136497}
+  - component: {fileID: -5836836291386796400}
+  - component: {fileID: -7607379206226097402}
   m_Layer: 0
   m_Name: Reindeer_white
   m_TagString: Untagged
@@ -4843,10 +4845,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1
+  m_Radius: 0.38401556
+  m_Height: 1.8870516
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0.019883096, y: 1.1096475, z: 0.19179022}
 --- !u!54 &8085793820128136497
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4863,6 +4865,33 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &-5836836291386796400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815102117930112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77a447b84ea78e843bc25d9314a3e936, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-7607379206226097402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815102117930112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6aac6f7c142f034d8dae4f148ef05b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PV: 20
+  damage: 5
+  pointsOnDeath: 0
 --- !u!1 &1823625469791490
 GameObject:
   m_ObjectHideFlags: 0
