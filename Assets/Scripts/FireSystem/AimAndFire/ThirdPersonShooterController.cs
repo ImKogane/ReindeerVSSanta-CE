@@ -4,7 +4,7 @@ using Cinemachine;
 using StarterAssets;
 using UnityEngine.InputSystem;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class ThirdPersonShooterController : MonoBehaviour
 {
@@ -13,6 +13,8 @@ public class ThirdPersonShooterController : MonoBehaviour
     [SerializeField] private float shootCooldown;
     [SerializeField] private LayerMask aimColliderLayerMask = new LayerMask();
     [SerializeField] public Transform bulletProjectile;
+    [SerializeField] private Sprite crosshairNormal;
+    [SerializeField] private Sprite crosshairAim;
 
     private Transform debugTransform;
     private Transform spawnBulletPosition;
@@ -48,6 +50,10 @@ public class ThirdPersonShooterController : MonoBehaviour
             thirdPersonController.SetSensitivity(aimSensitivity);
             thirdPersonController.SetRotateOnMove(false);
 
+            GameObject _tempUI = GameObject.FindGameObjectWithTag("Crosshair");
+            Image _tempImage = _tempUI.GetComponent<Image>();
+            _tempImage.sprite = crosshairAim;
+
             Vector3 worldAimTarget = mouseWorldPosition;
             worldAimTarget.y = transform.position.y;
             Vector3 aimDirection = (worldAimTarget - transform.position).normalized;
@@ -59,6 +65,10 @@ public class ThirdPersonShooterController : MonoBehaviour
             aimVirtualCamera.gameObject.SetActive(false);
             thirdPersonController.SetSensitivity(normalSensitivity);
             thirdPersonController.SetRotateOnMove(true);
+
+            GameObject _tempUI = GameObject.FindGameObjectWithTag("Crosshair");
+            Image _tempImage = _tempUI.GetComponent<Image>();
+            _tempImage.sprite = crosshairNormal;
         }
 
         if (starterAssetsInputs.shoot)

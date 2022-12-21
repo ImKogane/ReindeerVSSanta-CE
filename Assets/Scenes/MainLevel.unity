@@ -5981,6 +5981,18 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4171965105385463252, guid: fad7e5af3da73ca4fa96c485aebae445,
         type: 3}
+      propertyPath: crosshairAim
+      value: 
+      objectReference: {fileID: 21300000, guid: 4fda9223999b14d498d761654e15d70c,
+        type: 3}
+    - target: {fileID: 4171965105385463252, guid: fad7e5af3da73ca4fa96c485aebae445,
+        type: 3}
+      propertyPath: crosshairNormal
+      value: 
+      objectReference: {fileID: 21300000, guid: fe48f7ff8a3417f4290eecb803f2be91,
+        type: 3}
+    - target: {fileID: 4171965105385463252, guid: fad7e5af3da73ca4fa96c485aebae445,
+        type: 3}
       propertyPath: bulletProjectile
       value: 
       objectReference: {fileID: 867255492874219362, guid: 0a261c564735adb45bcca2aadd26b6a3,
@@ -32231,7 +32243,7 @@ GameObject:
   - component: {fileID: 1407923399}
   m_Layer: 5
   m_Name: Crosshair
-  m_TagString: Untagged
+  m_TagString: Crosshair
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32276,7 +32288,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 55c418dbb59d93940bbe99a4ef90475f, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
