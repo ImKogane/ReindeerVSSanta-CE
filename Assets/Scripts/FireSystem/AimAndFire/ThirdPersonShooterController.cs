@@ -11,8 +11,9 @@ public class ThirdPersonShooterController : NetworkBehaviour
 {
     [SerializeField] private float normalSensitivity;
     [SerializeField] private float aimSensitivity;
+    [SerializeField] private float shootCooldown;
     [SerializeField] private LayerMask aimColliderLayerMask = new LayerMask();
-    [SerializeField] private Transform bulletProjectile;
+    [SerializeField] public Transform bulletProjectile;
 
     private Transform debugTransform;
     private Transform spawnBulletPosition;
@@ -63,9 +64,18 @@ public class ThirdPersonShooterController : NetworkBehaviour
 
         if (starterAssetsInputs.shoot)
         {
-            Vector3 aimDir = (mouseWorldPosition - spawnBulletPosition.position).normalized;
-            Instantiate(bulletProjectile, spawnBulletPosition.position, Quaternion.LookRotation(aimDir, Vector3.up));
-            starterAssetsInputs.shoot= false;
+            if (shootCooldown <= 0)
+            {
+                Vector3 aimDir = (mouseWorldPosition - spawnBulletPosition.position).normalized;
+                Instantiate(bulletProjectile, spawnBulletPosition.position, Quaternion.LookRotation(aimDir, Vector3.up));
+                shootCooldown = 0.8f;
+                starterAssetsInputs.shoot = false;
+            }
+        }
+
+        if (shootCooldown > 0)
+        {
+            shootCooldown -= Time.deltaTime;
         }
     }
 }
