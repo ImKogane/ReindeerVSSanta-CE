@@ -81,6 +81,8 @@ public class ThirdPersonShooterController : MonoBehaviour
             _tempImage.sprite = crosshairNormal;
 
             canShoot = false;
+
+            shootCooldown = 0.8f;
         }
 
         if (starterAssetsInputs.shoot)
