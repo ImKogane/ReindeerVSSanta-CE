@@ -20,6 +20,8 @@ public class NetworkManagerUI : MonoBehaviour
     [SerializeField] private Button createButton;
     [SerializeField] private Button joinButton;
     [SerializeField] private GameObject joinInput;
+    [SerializeField] private GameObject codeText;
+    [SerializeField] private Button startButton;
 
     private void Awake(){
 
@@ -29,6 +31,10 @@ public class NetworkManagerUI : MonoBehaviour
 
         joinButton.onClick.AddListener(() => {
             JoinRelay(joinInput.GetComponent<TMP_InputField>().text);
+        });
+
+        startButton.onClick.AddListener(() => {
+            startGame();
         });
 
     }
@@ -49,14 +55,15 @@ public class NetworkManagerUI : MonoBehaviour
 
             string joinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
 
-            joinInput.GetComponent<TMP_InputField>().text = joinCode;
+            codeText.GetComponent<TMPro.TextMeshProUGUI>().text = joinCode;
             Debug.Log("code : " + joinCode);
 
             RelayServerData relayServerData = new RelayServerData(allocation, "dtls");
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
 
             NetworkManager.Singleton.StartHost();
-            SceneManager.LoadScene("MainLevel2");
+
+            // SceneManager.LoadScene("MainLevel2");
         } catch (RelayServiceException e){
             Debug.Log("Relay service error: " + e.Message);
         }
@@ -71,10 +78,14 @@ public class NetworkManagerUI : MonoBehaviour
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
 
             NetworkManager.Singleton.StartClient();
-            SceneManager.LoadScene("MainLevel2");
+            // SceneManager.LoadScene("MainLevel2");
         } catch (RelayServiceException e){
             Debug.Log("Relay service error: " + e.Message);
         }
+    }
+
+    private void startGame(){
+        SceneManager.LoadScene("MainLevel2");
     }
 
 }
