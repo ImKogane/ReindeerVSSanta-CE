@@ -1,5 +1,6 @@
 ﻿using Cinemachine;
 using UnityEngine;
+using Unity.Netcode;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
 #endif
@@ -13,7 +14,7 @@ namespace StarterAssets
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
     [RequireComponent(typeof(PlayerInput))]
 #endif
-    public class ThirdPersonController : MonoBehaviour
+    public class ThirdPersonController : NetworkBehaviour
     {
         [Header("Player")]
         [Tooltip("Move speed of the character in m/s")]
@@ -162,6 +163,7 @@ namespace StarterAssets
 
         private void Update()
         {
+            if (!IsOwner) return;
             _hasAnimator = TryGetComponent(out _animator);
 
             JumpAndGravity();
@@ -279,6 +281,9 @@ namespace StarterAssets
             Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
 
             // move the player
+            // var dir = targetDirection.normalized * (_speed * Time.deltaTime) +
+            //                  new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime;
+            // MoveCharacterServerRPC(dir);
             _controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) +
                              new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 
@@ -289,6 +294,12 @@ namespace StarterAssets
                 _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
             }
         }
+
+        // [ServerRpc]
+        // void MoveCharacterServerRPC(Vector3 dir)
+        // {
+        //     _controller.Move(dir);
+        // }
 
         private void Interaction(Collider other)
         {

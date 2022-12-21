@@ -4,9 +4,10 @@ using Cinemachine;
 using StarterAssets;
 using UnityEngine.InputSystem;
 using UnityEngine;
+using Unity.Netcode;
 
 
-public class ThirdPersonShooterController : MonoBehaviour
+public class ThirdPersonShooterController : NetworkBehaviour
 {
     [SerializeField] private float normalSensitivity;
     [SerializeField] private float aimSensitivity;
@@ -19,9 +20,11 @@ public class ThirdPersonShooterController : MonoBehaviour
     private CinemachineVirtualCamera aimVirtualCamera;
     private ThirdPersonController thirdPersonController;
     private StarterAssetsInputs starterAssetsInputs;
+
     private void Awake()
     {
         GameObject _tempCamera = GameObject.FindGameObjectWithTag("AimingCamera");
+        // Debug.Log("_tempCamera " + _tempCamera);
         aimVirtualCamera = _tempCamera.GetComponent<CinemachineVirtualCamera>();
         aimVirtualCamera.Follow = GameObject.Find("PlayerCameraRoot").transform;
         starterAssetsInputs = GetComponent<StarterAssetsInputs>();
@@ -32,6 +35,10 @@ public class ThirdPersonShooterController : MonoBehaviour
 
     private void Update()
     {
+        if (!IsOwner) {
+            return;
+        }
+
         Vector3 mouseWorldPosition = Vector3.zero;
 
         Vector2 screenCenterPoint = new Vector2(Screen.width / 2f, Screen.height / 2f);

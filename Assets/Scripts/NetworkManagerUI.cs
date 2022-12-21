@@ -22,15 +22,18 @@ public class NetworkManagerUI : MonoBehaviour
     [SerializeField] private GameObject joinInput;
     [SerializeField] private GameObject codeText;
     [SerializeField] private Button startButton;
+    [SerializeField] private GameObject canvas;
 
     private void Awake(){
 
         createButton.onClick.AddListener(() => {
-            CreateRelay();
+            // CreateRelay();
+            CreateLocalHost();
         });
 
         joinButton.onClick.AddListener(() => {
-            JoinRelay(joinInput.GetComponent<TMP_InputField>().text);
+            //JoinRelay(joinInput.GetComponent<TMP_InputField>().text);
+            JoinLocalHost();
         });
 
         startButton.onClick.AddListener(() => {
@@ -42,9 +45,9 @@ public class NetworkManagerUI : MonoBehaviour
     private async void Start(){
         await UnityServices.InitializeAsync();
 
-        AuthenticationService.Instance.SignedIn += () => {
-            Debug.Log("Signed in " + AuthenticationService.Instance.PlayerId);
-        };
+        // AuthenticationService.Instance.SignedIn += () => {
+        //     Debug.Log("Signed in " + AuthenticationService.Instance.PlayerId);
+        // };
 
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
     }
@@ -61,9 +64,10 @@ public class NetworkManagerUI : MonoBehaviour
             RelayServerData relayServerData = new RelayServerData(allocation, "dtls");
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
 
+            // SceneManager.LoadScene("MainLevel");
             NetworkManager.Singleton.StartHost();
+            Debug.Log("host started");
 
-            SceneManager.LoadScene("MainLevel");
         } catch (RelayServiceException e){
             Debug.Log("Relay service error: " + e.Message);
         }
@@ -77,15 +81,25 @@ public class NetworkManagerUI : MonoBehaviour
             RelayServerData relayServerData = new RelayServerData(joinAllocation, "dtls");
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
 
+            //SceneManager.LoadScene("MainLevel");
             NetworkManager.Singleton.StartClient();
-            SceneManager.LoadScene("MainLevel");
         } catch (RelayServiceException e){
             Debug.Log("Relay service error: " + e.Message);
         }
     }
 
     private void startGame(){
-        SceneManager.LoadScene("MainLevel");
+        //SceneManager.LoadScene("MainLevel");
+    }
+
+    private void CreateLocalHost(){
+        NetworkManager.Singleton.StartHost();
+        canvas.SetActive(false);
+    }
+
+    private void JoinLocalHost(){
+        NetworkManager.Singleton.StartClient();
+        canvas.SetActive(false);
     }
 
 }

@@ -3503,10 +3503,15 @@ GameObject:
   - component: {fileID: 4138507004538650337}
   - component: {fileID: 7261230082137554475}
   - component: {fileID: 7261230082137554474}
+  - component: {fileID: 4171965105385463252}
   - component: {fileID: 6371271195985617501}
   - component: {fileID: 7261230082137554477}
   - component: {fileID: 565647567406032288}
-  - component: {fileID: 4171965105385463252}
+  - component: {fileID: 7998355134933666077}
+  - component: {fileID: -3774690209602887946}
+  - component: {fileID: -7923737673231842895}
+  - component: {fileID: 1775248151772411391}
+  - component: {fileID: 4298984093192356320}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -3607,6 +3612,26 @@ MonoBehaviour:
   BottomClamp: -30
   CameraAngleOverride: 0
   LockCameraPosition: 0
+--- !u!114 &4171965105385463252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7261230082137554465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc4ba61a1f313e343ad356e6d9285b05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalSensitivity: 1
+  aimSensitivity: 0.5
+  shootCooldown: 0
+  aimColliderLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  bulletProjectile: {fileID: 867255492874219362, guid: ca19f4ee70c007546958cf37f817d52b,
+    type: 3}
 --- !u!114 &6371271195985617501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3744,7 +3769,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4171965105385463252
+--- !u!114 &7998355134933666077
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3753,16 +3778,77 @@ MonoBehaviour:
   m_GameObject: {fileID: 7261230082137554465}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc4ba61a1f313e343ad356e6d9285b05, type: 3}
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalSensitivity: 1
-  aimSensitivity: 0.5
-  aimColliderLayerMask:
-    serializedVersion: 2
-    m_Bits: 1
-  bulletProjectile: {fileID: 867255492874219362, guid: ca19f4ee70c007546958cf37f817d52b,
-    type: 3}
+  GlobalObjectIdHash: 951099334
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+--- !u!114 &-3774690209602887946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7261230082137554465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26c013ad9107c864a9d556ab228c9dbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-7923737673231842895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7261230082137554465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SyncPositionX: 1
+  SyncPositionY: 1
+  SyncPositionZ: 1
+  SyncRotAngleX: 0
+  SyncRotAngleY: 1
+  SyncRotAngleZ: 0
+  SyncScaleX: 0
+  SyncScaleY: 0
+  SyncScaleZ: 0
+  PositionThreshold: 0.001
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  InLocalSpace: 0
+  Interpolate: 1
+--- !u!114 &1775248151772411391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7261230082137554465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6c0be61502bb534f922ebb746851216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4298984093192356320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7261230082137554465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8d0727d5ae3244e3b569694d3912374, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TransitionStateInfoList: []
+  m_Animator: {fileID: 4138507004538650337}
 --- !u!1 &7281067314498973515
 GameObject:
   m_ObjectHideFlags: 0
