@@ -21,7 +21,6 @@ public class NetworkManagerUI : MonoBehaviour
     [SerializeField] private Button joinButton;
     [SerializeField] private GameObject joinInput;
     [SerializeField] private GameObject codeText;
-    [SerializeField] private Button startButton;
 
     private void Awake(){
 
@@ -31,10 +30,6 @@ public class NetworkManagerUI : MonoBehaviour
 
         joinButton.onClick.AddListener(() => {
             JoinRelay(joinInput.GetComponent<TMP_InputField>().text);
-        });
-
-        startButton.onClick.AddListener(() => {
-            startGame();
         });
 
     }
@@ -62,8 +57,6 @@ public class NetworkManagerUI : MonoBehaviour
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
 
             NetworkManager.Singleton.StartHost();
-
-            SceneManager.LoadScene("MainLevel");
         } catch (RelayServiceException e){
             Debug.Log("Relay service error: " + e.Message);
         }
@@ -78,7 +71,6 @@ public class NetworkManagerUI : MonoBehaviour
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
 
             NetworkManager.Singleton.StartClient();
-            SceneManager.LoadScene("MainLevel");
         } catch (RelayServiceException e){
             Debug.Log("Relay service error: " + e.Message);
         }
