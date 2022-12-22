@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Unity.Netcode;
 
-public class ThirdPersonShooterController : NetworkBehaviour
+public class ThirdPersonShooterController : MonoBehaviour
 {
     [SerializeField] private float normalSensitivity;
     [SerializeField] private float aimSensitivity;

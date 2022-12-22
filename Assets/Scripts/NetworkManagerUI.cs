@@ -40,7 +40,7 @@ public class NetworkManagerUI : MonoBehaviour
             startGame();
         });
 
-        //aimUI.enabled = false;
+        aimUI.enabled = false;
 
     }
 
