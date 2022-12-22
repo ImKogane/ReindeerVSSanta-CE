@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -22,6 +23,8 @@ public class NetworkManagerUI : MonoBehaviour
     [SerializeField] private GameObject joinInput;
     [SerializeField] private GameObject codeText;
     [SerializeField] private Button startButton;
+    [SerializeField] private Canvas aimUI;
+    [SerializeField] private Canvas menuPrincipal;
 
     private void Awake(){
 
@@ -36,6 +39,8 @@ public class NetworkManagerUI : MonoBehaviour
         startButton.onClick.AddListener(() => {
             startGame();
         });
+
+        //aimUI.enabled = false;
 
     }
 
@@ -61,8 +66,9 @@ public class NetworkManagerUI : MonoBehaviour
             RelayServerData relayServerData = new RelayServerData(allocation, "dtls");
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
 
-            NetworkSceneManager.LoadScene("MainLevel");
             NetworkManager.Singleton.StartHost();
+            aimUI.enabled = true;
+            menuPrincipal.enabled = false;
 
         } catch (RelayServiceException e){
             Debug.Log("Relay service error: " + e.Message);
@@ -79,7 +85,9 @@ public class NetworkManagerUI : MonoBehaviour
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
 
             NetworkManager.Singleton.StartClient();
-            SceneManager.LoadScene("MainLevel");
+            aimUI.enabled = true;
+            menuPrincipal.enabled = false;
+            
         } catch (RelayServiceException e){
             Debug.Log("Relay service error: " + e.Message);
         }

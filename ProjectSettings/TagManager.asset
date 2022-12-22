@@ -12,6 +12,8 @@ TagManager:
   - FirePosition
   - Crosshair
   - WaveManager
+  - AimUI
+  - MenuPrincipal
   layers:
   - Default
   - TransparentFX
