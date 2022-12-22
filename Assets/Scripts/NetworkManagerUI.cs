@@ -61,9 +61,9 @@ public class NetworkManagerUI : MonoBehaviour
             RelayServerData relayServerData = new RelayServerData(allocation, "dtls");
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
 
+            NetworkSceneManager.LoadScene("MainLevel");
             NetworkManager.Singleton.StartHost();
 
-            SceneManager.LoadScene("MainLevel");
         } catch (RelayServiceException e){
             Debug.Log("Relay service error: " + e.Message);
         }
@@ -73,6 +73,7 @@ public class NetworkManagerUI : MonoBehaviour
         try {
             Debug.Log("JoinRelay: " + joinCode);
             JoinAllocation joinAllocation = await RelayService.Instance.JoinAllocationAsync(joinCode);
+            Debug.Log("JoinAllocation: " + joinAllocation.ToString());
 
             RelayServerData relayServerData = new RelayServerData(joinAllocation, "dtls");
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);

@@ -1605,16 +1605,49 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RunInBackground: 1
-  LogLevel: 1
+  LogLevel: 0
   NetworkConfig:
     ProtocolVersion: 0
     NetworkTransport: {fileID: 1551166873}
-    PlayerPrefab: {fileID: 7261230082137554465, guid: 55c954ef300658f49b32b77009fdab56,
+    PlayerPrefab: {fileID: 7261230082137554465, guid: fad7e5af3da73ca4fa96c485aebae445,
       type: 3}
     NetworkPrefabs:
     - Override: 0
-      Prefab: {fileID: 7261230082137554465, guid: 55c954ef300658f49b32b77009fdab56,
+      Prefab: {fileID: 7261230082137554465, guid: fad7e5af3da73ca4fa96c485aebae445,
         type: 3}
+      SourcePrefabToOverride: {fileID: 0}
+      SourceHashToOverride: 0
+      OverridingTargetPrefab: {fileID: 0}
+    - Override: 0
+      Prefab: {fileID: 1026340436132189505, guid: ca19f4ee70c007546958cf37f817d52b,
+        type: 3}
+      SourcePrefabToOverride: {fileID: 0}
+      SourceHashToOverride: 0
+      OverridingTargetPrefab: {fileID: 0}
+    - Override: 0
+      Prefab: {fileID: 1026340436132189505, guid: 0a261c564735adb45bcca2aadd26b6a3,
+        type: 3}
+      SourcePrefabToOverride: {fileID: 0}
+      SourceHashToOverride: 0
+      OverridingTargetPrefab: {fileID: 0}
+    - Override: 0
+      Prefab: {fileID: 1026340436132189505, guid: e3f8107770c58f049a884f4adb11d445,
+        type: 3}
+      SourcePrefabToOverride: {fileID: 0}
+      SourceHashToOverride: 0
+      OverridingTargetPrefab: {fileID: 0}
+    - Override: 0
+      Prefab: {fileID: 1815102117930112, guid: 18695259af423471b93bd0f1b29ae91e, type: 3}
+      SourcePrefabToOverride: {fileID: 0}
+      SourceHashToOverride: 0
+      OverridingTargetPrefab: {fileID: 0}
+    - Override: 0
+      Prefab: {fileID: 1557322274417784, guid: 8bcb93f2477e04c32a215172cb377dfc, type: 3}
+      SourcePrefabToOverride: {fileID: 0}
+      SourceHashToOverride: 0
+      OverridingTargetPrefab: {fileID: 0}
+    - Override: 0
+      Prefab: {fileID: 1820497313580172, guid: 75cad2c74588f4e799d672ab3542c32e, type: 3}
       SourcePrefabToOverride: {fileID: 0}
       SourceHashToOverride: 0
       OverridingTargetPrefab: {fileID: 0}
