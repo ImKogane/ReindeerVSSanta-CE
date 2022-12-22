@@ -2,31 +2,41 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Unity.Netcode;
-using Unity.Services.Authentication;
+using UnityEngine.SceneManagement;
 using Unity.Services.Core;
+using Unity.Services.Authentication;
 using Unity.Services.Relay;
 using Unity.Services.Relay.Models;
-using Unity.Netcode.Transports.UTP;
-using Unity.Networking.Transport.Relay;
 using TMPro;
+using Unity.Netcode;
+using Unity.Netcode.Transports.UTP;
+using Unity.Networking.Transport;
+using Unity.Networking.Transport.Relay;
 
 
 public class NetworkManagerUI : MonoBehaviour
 {
-    
-    [SerializeField] private Button hostBtn;
-    [SerializeField] private Button clientBtn;
-    [SerializeField] private GameObject codeInputField;
+
+    [SerializeField] private Button createButton;
+    [SerializeField] private Button joinButton;
+    [SerializeField] private GameObject joinInput;
+    [SerializeField] private GameObject codeText;
+    [SerializeField] private Button startButton;
 
     private void Awake(){
-        hostBtn.onClick.AddListener(() => {
+
+        createButton.onClick.AddListener(() => {
             CreateRelay();
         });
 
-        clientBtn.onClick.AddListener(() => {
-            JoinedRelay(codeInputField.GetComponent<TMP_InputField>().text);
+        joinButton.onClick.AddListener(() => {
+            JoinRelay(joinInput.GetComponent<TMP_InputField>().text);
         });
+
+        startButton.onClick.AddListener(() => {
+            startGame();
+        });
+
     }
 
     private async void Start(){
@@ -43,33 +53,39 @@ public class NetworkManagerUI : MonoBehaviour
         try {
             Allocation allocation = await RelayService.Instance.CreateAllocationAsync(3);
 
-            string joincode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
-            Debug.Log(joincode);
+            string joinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
+
+            codeText.GetComponent<TMPro.TextMeshProUGUI>().text = joinCode;
+            Debug.Log("code : " + joinCode);
 
             RelayServerData relayServerData = new RelayServerData(allocation, "dtls");
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
 
             NetworkManager.Singleton.StartHost();
 
-        } catch (RelayServiceException e) {
+            SceneManager.LoadScene("MainLevel");
+        } catch (RelayServiceException e){
             Debug.Log("Relay service error: " + e.Message);
         }
-    
     }
 
-    private async void JoinedRelay(string joinCode){
+    private async void JoinRelay(string joinCode){
         try {
-            Debug.Log("Joined Relay with code " + joinCode);
+            Debug.Log("JoinRelay: " + joinCode);
             JoinAllocation joinAllocation = await RelayService.Instance.JoinAllocationAsync(joinCode);
 
             RelayServerData relayServerData = new RelayServerData(joinAllocation, "dtls");
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
 
             NetworkManager.Singleton.StartClient();
-
-        } catch (RelayServiceException e) {
+            SceneManager.LoadScene("MainLevel");
+        } catch (RelayServiceException e){
             Debug.Log("Relay service error: " + e.Message);
         }
+    }
+
+    private void startGame(){
+        SceneManager.LoadScene("MainLevel");
     }
 
 }
